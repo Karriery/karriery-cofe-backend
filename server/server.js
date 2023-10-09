@@ -1,5 +1,8 @@
 const express = require("express");
+const http = require("http");
+const socketIo = require("socket.io");
 const app = express();
+
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const multer = require("multer");
@@ -28,6 +31,28 @@ app.use(
     origin: "*",
   })
 );
+const server = http.createServer(app);
+const io = socketIo(server, {
+  cors: {
+    origin: "*",
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("A user connected");
+  io.emit("message", "ahahahah");
+
+  // Handle events from connected clients here.
+  socket.on("order", (message) => {
+    console.log("Received message:", message);
+    // Broadcast the message to all connected clients.
+    io.emit("neworder", message);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("A user disconnected");
+  });
+});
 
 app.use("/auth/admin", authAdminRout);
 app.use("/auth/employe", authEmployeRout);
@@ -54,6 +79,6 @@ app.post("/upload", upload.any(0), (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });

@@ -32,6 +32,7 @@ module.exports = {
       var employe = await employeService.getEmployeByUsername(
         req.body.username
       );
+      console.log(employe);
       if (employe) {
         bcrypt.compare(req.body.password, employe.password, (err, result) => {
           if (result) {
