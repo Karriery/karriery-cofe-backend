@@ -16,4 +16,7 @@ module.exports = new (class TableService {
   update(_id, data) {
     return Table.findOneAndUpdate({ _id: _id }, data);
   }
+  updateByOrderId(_id, data) {
+    return Table.findOneAndUpdate({ order: _id }, data);
+  }
 })();

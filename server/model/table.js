@@ -5,6 +5,11 @@ mongoose.Promise = global.Promise;
 const TablesSchema = new mongoose.Schema(
   {
     number: String,
+    status: { type: String, default: "Open" },
+    order: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "Order",
+    },
     admin: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: "Admin",

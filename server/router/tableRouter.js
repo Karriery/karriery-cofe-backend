@@ -5,6 +5,7 @@ router.get("/id/:id", tableController.gettableById);
 router.get("/:id", tableController.gettable);
 router.post("/", tableController.create);
 router.put("/:id", tableController.updated);
+router.put("/orderid/:id", tableController.updateByOrderId);
 router.delete("/:id", tableController.deleteByParams);
 
 module.exports = router;

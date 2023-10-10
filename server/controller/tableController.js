@@ -42,4 +42,13 @@ module.exports = {
       res.status(401).json(next);
     }
   },
+  async updateByOrderId(req, res, next) {
+    try {
+      console.log(req.body);
+      var table = await tableService.updateByOrderId(req.params.id, req.body);
+      res.send(table);
+    } catch (next) {
+      res.status(401).json(next);
+    }
+  },
 };

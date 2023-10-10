@@ -4,9 +4,6 @@ module.exports = new (class EmployeService {
   signup(data) {
     return Employe.create(data);
   }
-  createWallet(data) {
-    return Wallet.create(data);
-  }
   getEmployeById(id) {
     return Employe.findOne({ _id: id });
   }
