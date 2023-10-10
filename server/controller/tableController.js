@@ -34,6 +34,7 @@ module.exports = {
       res.status(401).json(next);
     }
   },
+
   async updated(req, res, next) {
     try {
       var table = await tableService.update(req.params.id, req.body);

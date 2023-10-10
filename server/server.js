@@ -50,6 +50,11 @@ io.on("connection", (socket) => {
     // Broadcast the message to all connected clients.
     io.emit("neworder", message);
   });
+  socket.on("order1", (message) => {
+    console.log("Received message:", message);
+    // Broadcast the message to all connected clients.
+    io.emit("neworder1", message);
+  });
 
   socket.on("disconnect", () => {
     console.log("A user disconnected");
