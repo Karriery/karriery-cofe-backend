@@ -20,6 +20,7 @@ const authEmployeRout = require("./auth/employe/employeAuthRouter/router.js");
 const adminRouter = require("./router/adminRouter.js");
 const employeRouter = require("./router/employeRouter.js");
 const productRouter = require("./router/productRouter.js");
+const categoryRouter = require("./router/categoryRouter.js");
 const tableRouter = require("./router/tableRouter.js");
 const orderRouter = require("./router/orderRouter.js");
 
@@ -59,6 +60,7 @@ app.use("/auth/employe", authEmployeRout);
 app.use("/admin", adminRouter);
 app.use("/employe", employeRouter);
 app.use("/product", productRouter);
+app.use("/category", categoryRouter);
 app.use("/order", orderRouter);
 app.use("/table", tableRouter);
 app.use("/static", express.static("public"));

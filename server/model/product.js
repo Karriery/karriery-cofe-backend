@@ -7,6 +7,7 @@ const ProductSchema = new mongoose.Schema(
     name: String,
     photo: String,
     prix: Number,
+    category: { type: String, default: "coffe" },
     admin: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: "Admin",

@@ -4,6 +4,7 @@ mongoose.Promise = global.Promise;
 
 const OrderSchema = new mongoose.Schema(
   {
+    status: { type: Number, default: 1 },
     order: String,
     total: Number,
     table: String,
