@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const productController = require("../controller/productController.js");
-
+router.put("/quantity/:id", productController.updateQuantity);
 router.get("/id/:id", productController.getproductById);
 router.get("/:id", productController.getproduct);
 router.post("/", productController.create);

@@ -12,7 +12,7 @@ module.exports = {
 
   async create(req, res, next) {
     try {
-      var product = await productService.create(req.body);
+      var product = await productService.create({ ...req.body, quantity: 1 });
       res.send(product);
     } catch (next) {
       res.status(401).json(next);
@@ -36,8 +36,23 @@ module.exports = {
   },
   async updated(req, res, next) {
     try {
-      var product = await productService.update(req.params.id, req.body);
-      res.send(product);
+      const product = await productService.get(req.params.id);
+      const updated = await productService.update(req.params.id, {
+        ...req.body,
+        quantity: product.quantity,
+      });
+      res.send(updated);
+    } catch (next) {
+      console.log(next);
+    }
+  },
+
+  async updateQuantity(req, res, next) {
+    try {
+      const updated = await productService.update(req.params.id, {
+        quantity: req.body.quantity,
+      });
+      res.send(updated);
     } catch (next) {
       res.status(401).json(next);
     }

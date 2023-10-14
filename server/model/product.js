@@ -7,7 +7,9 @@ const ProductSchema = new mongoose.Schema(
     name: String,
     photo: String,
     prix: Number,
+    quantifiable: { type: Boolean, default: true },
     category: { type: String, default: "coffe" },
+    quantity: { type: Number, default: 0 },
     admin: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: "Admin",
