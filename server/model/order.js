@@ -16,6 +16,7 @@ const OrderSchema = new mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       ref: "Admin",
     },
+    archive: { type: Boolean, default: false },
     type: { type: String, default: "Order" },
   },
   {
